@@ -1,0 +1,148 @@
+/* ==========================================================================
+   Narra — Public / Guest shared styles
+   Extracted from welcome.blade.php (design reference) and the shared
+   navbar / page-header / footer styles used by the public listing pages.
+   Page-specific styles (hero, cards, contact, rating, etc.) stay in the pages.
+   ========================================================================== */
+
+:root {
+    /* Brand palette (source of truth: welcome.blade.php) */
+    --bs-primary: #2563eb;
+    --bs-primary-hover: #1d4ed8;
+
+    /* Shared neutral palette used by the public listing pages */
+    --narra-bg: #f8fafc;
+    --narra-card-bg: #ffffff;
+    --narra-text-dark: #0f172a;
+    --narra-text-muted: #64748b;
+    --narra-text-subtle: #94a3b8;
+    --narra-border: #f1f5f9;
+
+    /* Font stack — pages may override (e.g. welcome uses Inter by default) */
+    --narra-font-sans: 'Inter', sans-serif;
+
+    /* Body defaults follow welcome.blade.php; inner pages override per page */
+    --narra-body-color: #334155;
+    --narra-body-bg: #ffffff;
+}
+
+body {
+    font-family: var(--narra-font-sans);
+    color: var(--narra-body-color);
+    background-color: var(--narra-body-bg);
+}
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+
+.navbar {
+    background-color: #f8fafc !important;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.65rem;
+    color: var(--bs-primary) !important;
+    letter-spacing: -0.03em;
+}
+
+.nav-link {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #64748b !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--bs-primary) !important;
+}
+
+.nav-link.active {
+    color: var(--bs-primary) !important;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Page header (shared by public listing pages)
+   ========================================================================== */
+
+.page-header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.category-label {
+    color: var(--bs-primary);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.page-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--narra-text-dark);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+/* ==========================================================================
+   Empty state (shared by public listing pages)
+   ========================================================================== */
+
+.empty-state {
+    padding: 5rem 1rem;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: var(--narra-text-subtle);
+}
+
+/* ==========================================================================
+   Footer (shared by public inner pages)
+   ========================================================================== */
+
+.footer-divider {
+    border-top: 1px solid #cbd5e1;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    opacity: 0.6;
+}
+
+.footer-brand {
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--bs-primary);
+    letter-spacing: -0.03em;
+}
+
+.copyright-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--bs-primary);
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .navbar {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .page-title {
+        font-size: 2.25rem;
+    }
+}

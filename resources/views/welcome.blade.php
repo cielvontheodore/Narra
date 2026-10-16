@@ -1,443 +1,302 @@
-<!DOCTYPE html>
-<html lang="id">
+<x-public.layout
+    title="Narra - Setiap Siswa Punya Cerita"
+    navbarVariant="landing"
+    :container="false"
+    :footer="false"
+>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Narra - Setiap Siswa Punya Cerita</title>
+    @push('head')
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    @endpush
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <style>
-        :root {
-            --bs-primary: #2563eb;
-            --bs-primary-hover: #1d4ed8;
-            --bs-body-font-family: 'Inter', sans-serif;
-            --bs-body-color: #334155;
-            --bs-heading-color: #0f172a;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 100px;
-        }
-
-        body {
-            font-family: var(--bs-body-font-family);
-            color: var(--bs-body-color);
-            overflow-x: hidden;
-            background-color: #ffffff;
-        }
-
-        .btn-primary {
-            background-color: var(--bs-primary);
-            border-color: var(--bs-primary);
-            padding: 0.6rem 1.4rem;
-            font-weight: 500;
-            border-radius: 0.5rem;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--bs-primary-hover);
-            border-color: var(--bs-primary-hover);
-        }
-
-        .btn-outline-custom {
-            border: 1px solid #e2e8f0;
-            color: #475569;
-            background-color: #ffffff;
-            padding: 0.6rem 1.4rem;
-            font-weight: 500;
-            border-radius: 0.5rem;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .btn-outline-custom:hover {
-            background-color: #f8fafc;
-            color: #0f172a;
-            border-color: #cbd5e1;
-        }
-
-        .text-primary-custom {
-            color: var(--bs-primary) !important;
-        }
-
-        .badge-soft-primary {
-            background-color: #eff6ff;
-            color: var(--bs-primary);
-            font-weight: 600;
-            font-size: 0.8rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            padding: 0.4rem 0.8rem;
-            border-radius: 2rem;
-            display: inline-block;
-        }
-
-        /* Navbar */
-        .navbar {
-            background-color: #f8fafc !important;
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.65rem;
-            color: var(--bs-primary) !important;
-            letter-spacing: -0.03em;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            font-size: 0.95rem;
-            color: #64748b !important;
-            padding-left: 1.25rem !important;
-            padding-right: 1.25rem !important;
-            transition: color 0.2s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--bs-primary) !important;
-        }
-
-        .nav-link.active {
-            color: var(--bs-primary) !important;
-            font-weight: 600;
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .navbar {
-                padding-top: 1rem;
-                padding-bottom: 1rem;
+    @push('styles')
+        <style>
+            /* Page-specific landing styles.
+               Shared navbar / footer / base typography live in css/public.css */
+            :root {
+                --bs-body-color: #334155;
+                --bs-heading-color: #0f172a;
             }
-        }
 
-        /* Hero */
-        .hero-section {
-            padding: 5rem 0 3rem;
-        }
+            html {
+                scroll-behavior: smooth;
+                scroll-padding-top: 100px;
+            }
 
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-        }
+            body {
+                overflow-x: hidden;
+            }
 
-        /* Stats */
-        .stats-section {
-            padding: 3rem 0;
-            border-top: 1px solid #f1f5f9;
-            border-bottom: 1px solid #f1f5f9;
-        }
+            .btn-primary {
+                background-color: var(--bs-primary);
+                border-color: var(--bs-primary);
+                padding: 0.6rem 1.4rem;
+                font-weight: 500;
+                border-radius: 0.5rem;
+                transition: all 0.2s ease-in-out;
+            }
 
-        .stat-value {
-            font-size: 2.25rem;
-            font-weight: 800;
-            color: var(--bs-primary);
-            line-height: 1;
-        }
+            .btn-primary:hover {
+                background-color: var(--bs-primary-hover);
+                border-color: var(--bs-primary-hover);
+            }
 
-        .stat-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #94a3b8;
-            margin-top: 0.5rem;
-        }
+            .btn-outline-custom {
+                border: 1px solid #e2e8f0;
+                color: #475569;
+                background-color: #ffffff;
+                padding: 0.6rem 1.4rem;
+                font-weight: 500;
+                border-radius: 0.5rem;
+                transition: all 0.2s ease-in-out;
+            }
 
-        .divider-vertical {
-            border-right: 1px solid #e2e8f0;
-        }
+            .btn-outline-custom:hover {
+                background-color: #f8fafc;
+                color: #0f172a;
+                border-color: #cbd5e1;
+            }
 
-        /* Feature Cards */
-        .card-feature {
-            background: #f8fafc;
-            border: 1px solid #f1f5f9;
-            border-radius: 1rem;
-            padding: 2rem;
-            height: 100%;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+            .text-primary-custom {
+                color: var(--bs-primary) !important;
+            }
 
-        .card-feature:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-        }
+            .badge-soft-primary {
+                background-color: #eff6ff;
+                color: var(--bs-primary);
+                font-weight: 600;
+                font-size: 0.8rem;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                padding: 0.4rem 0.8rem;
+                border-radius: 2rem;
+                display: inline-block;
+            }
 
-        .icon-box {
-            width: 42px;
-            height: 42px;
-            border-radius: 0.6rem;
-            background-color: #dbeafe;
-            color: var(--bs-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            margin-bottom: 1.25rem;
-        }
+            /* Hero */
+            .hero-section {
+                padding: 5rem 0 3rem;
+            }
 
-        /* News Cards */
-        .card-news {
-            border: 1px solid #f1f5f9;
-            border-radius: 0.8rem;
-            overflow: hidden;
-            background: #fff;
-            transition: transform 0.2s, box-shadow 0.2s;
-            height: 100%;
-        }
-
-        .card-news:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.08);
-        }
-
-        .card-news img {
-            height: 180px;
-            object-fit: cover;
-            width: 100%;
-        }
-
-        .news-date {
-            font-size: 0.75rem;
-            color: #94a3b8;
-        }
-
-        /* Gallery */
-        .gallery-item {
-            position: relative;
-            border-radius: 0.8rem;
-            overflow: hidden;
-            height: 100%;
-            min-height: 220px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.03);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to top,
-                rgba(15, 23, 42, 0.85) 0%,
-                rgba(15, 23, 42, 0) 60%
-            );
-            display: flex;
-            align-items: flex-end;
-            padding: 1.25rem;
-            color: white;
-        }
-
-        /* Contact */
-        .contact-section {
-            background-color: #1e52f0;
-            color: white;
-            padding: 5rem 0 3rem;
-        }
-
-        .contact-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            color: var(--bs-body-color);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-control,
-        .form-select {
-            padding: 0.75rem 1rem;
-            border-color: #cbd5e1;
-            border-radius: 0.5rem;
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            border-color: var(--bs-primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-        }
-
-        /* Rating */
-        .rating-section {
-            background-color: #f8fafc;
-        }
-
-        .rating-card {
-            background: #ffffff;
-            border: 1px solid #f1f5f9;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.05);
-        }
-
-        .rating-stars {
-            color: #f59e0b;
-        }
-
-        /* Footer */
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 2rem;
-            margin-top: 4rem;
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        @media (max-width: 768px) {
             .hero-title {
-                font-size: 2.3rem;
+                font-size: 3rem;
+                font-weight: 800;
+                letter-spacing: -0.02em;
+                line-height: 1.2;
+            }
+
+            /* Stats */
+            .stats-section {
+                padding: 3rem 0;
+                border-top: 1px solid #f1f5f9;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
+            .stat-value {
+                font-size: 2.25rem;
+                font-weight: 800;
+                color: var(--bs-primary);
+                line-height: 1;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: #94a3b8;
+                margin-top: 0.5rem;
             }
 
             .divider-vertical {
-                border-right: none;
-            }
-        }
-
-        /* Rating + Map */
-        .rating-layout {
-            display: flex;
-            gap: 2rem;
-            align-items: stretch;
-        }
-
-        .rating-map {
-            width: 50%;
-            min-height: 100%;
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.05);
-            background-color: #ffffff;
-        }
-
-        .rating-map iframe {
-            width: 100%;
-            height: 100%;
-            min-height: 520px;
-            display: block;
-            border: 0;
-        }
-
-        .rating-form-wrapper {
-            width: 50%;
-        }
-
-        @media (max-width: 991.98px) {
-            .rating-layout {
-                flex-direction: column;
+                border-right: 1px solid #e2e8f0;
             }
 
-            .rating-map,
-            .rating-form-wrapper {
+            /* Feature Cards */
+            .card-feature {
+                background: #f8fafc;
+                border: 1px solid #f1f5f9;
+                border-radius: 1rem;
+                padding: 2rem;
+                height: 100%;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .card-feature:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            }
+
+            .icon-box {
+                width: 42px;
+                height: 42px;
+                border-radius: 0.6rem;
+                background-color: #dbeafe;
+                color: var(--bs-primary);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2rem;
+                margin-bottom: 1.25rem;
+            }
+
+            /* News Cards */
+            .card-news {
+                border: 1px solid #f1f5f9;
+                border-radius: 0.8rem;
+                overflow: hidden;
+                background: #fff;
+                transition: transform 0.2s, box-shadow 0.2s;
+                height: 100%;
+            }
+
+            .card-news:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.08);
+            }
+
+            .card-news img {
+                height: 180px;
+                object-fit: cover;
                 width: 100%;
             }
 
-            .rating-map iframe {
-                min-height: 400px;
+            .news-date {
+                font-size: 0.75rem;
+                color: #94a3b8;
             }
-        }
-    </style>
-</head>
 
-<body>
+            /* Gallery */
+            .gallery-item {
+                position: relative;
+                border-radius: 0.8rem;
+                overflow: hidden;
+                height: 100%;
+                min-height: 220px;
+            }
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
+            .gallery-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s;
+            }
 
-        <div class="container">
+            .gallery-item:hover img {
+                transform: scale(1.03);
+            }
 
-            <a
-                class="navbar-brand"
-                href="{{ url('/') }}"
-            >
-                Narra
-            </a>
+            /* Contact */
+            .contact-section {
+                background-color: #1e52f0;
+                color: white;
+                padding: 5rem 0 3rem;
+            }
 
-            <button
-                class="navbar-toggler border-0"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            .contact-card {
+                background: white;
+                border-radius: 1rem;
+                padding: 2rem;
+                color: var(--bs-body-color);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            }
 
-            <div
-                class="collapse navbar-collapse justify-content-end"
-                id="navbarNav"
-            >
+            .form-control,
+            .form-select {
+                padding: 0.75rem 1rem;
+                border-color: #cbd5e1;
+                border-radius: 0.5rem;
+            }
 
-                <ul class="navbar-nav">
+            .form-control:focus,
+            .form-select:focus {
+                border-color: var(--bs-primary);
+                box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+            }
 
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#home">
-                            Home
-                        </a>
-                    </li>
+            /* Rating */
+            .rating-section {
+                background-color: #f8fafc;
+            }
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">
-                            About
-                        </a>
-                    </li>
+            .rating-card {
+                background: #ffffff;
+                border: 1px solid #f1f5f9;
+                border-radius: 1rem;
+                padding: 2rem;
+                box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.05);
+            }
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#programs">
-                            Majors
-                        </a>
-                    </li>
+            .rating-stars {
+                color: #f59e0b;
+            }
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#news">
-                            News
-                        </a>
-                    </li>
+            /* Footer */
+            .footer-bottom {
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                padding-top: 2rem;
+                margin-top: 4rem;
+                font-size: 0.875rem;
+                color: rgba(255, 255, 255, 0.8);
+            }
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#gallery">
-                            Gallery
-                        </a>
-                    </li>
+            @media (max-width: 768px) {
+                .hero-title {
+                    font-size: 2.3rem;
+                }
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#rating">
-                            Rating
-                        </a>
-                    </li>
+                .divider-vertical {
+                    border-right: none;
+                }
+            }
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">
-                            Contact
-                        </a>
-                    </li>
+            /* Rating + Map */
+            .rating-layout {
+                display: flex;
+                gap: 2rem;
+                align-items: stretch;
+            }
 
-                </ul>
+            .rating-map {
+                width: 50%;
+                min-height: 100%;
+                border-radius: 1rem;
+                overflow: hidden;
+                box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.05);
+                background-color: #ffffff;
+            }
 
-            </div>
-        </div>
-    </nav>
+            .rating-map iframe {
+                width: 100%;
+                height: 100%;
+                min-height: 520px;
+                display: block;
+                border: 0;
+            }
 
+            .rating-form-wrapper {
+                width: 50%;
+            }
+
+            @media (max-width: 991.98px) {
+                .rating-layout {
+                    flex-direction: column;
+                }
+
+                .rating-map,
+                .rating-form-wrapper {
+                    width: 100%;
+                }
+
+                .rating-map iframe {
+                    min-height: 400px;
+                }
+            }
+        </style>
+    @endpush
 
     <!-- Hero Section -->
     <section class="hero-section text-center" id="home">
@@ -676,104 +535,104 @@
     </section>
 
 
-<!-- Product Section -->
-<section id="products" class="py-5">
-    <div class="container">
+    <!-- Product Section -->
+    <section id="products" class="py-5">
+        <div class="container">
 
-        <div class="d-flex justify-content-between align-items-end mb-4">
-            <div>
-                <span class="badge-soft-primary mb-2">
-                    Solusi Kami
-                </span>
+            <div class="d-flex justify-content-between align-items-end mb-4">
+                <div>
+                    <span class="badge-soft-primary mb-2">
+                        Solusi Kami
+                    </span>
 
-                <h2 class="fw-bold mb-1 fs-2">
-                    Produk Kami
-                </h2>
+                    <h2 class="fw-bold mb-1 fs-2">
+                        Produk Kami
+                    </h2>
 
-                <p class="text-secondary small mb-0">
-                    Kenali berbagai produk dan solusi yang kami tawarkan
-                    untuk mendukung kebutuhan Anda.
-                </p>
+                    <p class="text-secondary small mb-0">
+                        Kenali berbagai produk dan solusi yang kami tawarkan
+                        untuk mendukung kebutuhan Anda.
+                    </p>
+                </div>
+
+                <a
+                    href="#contact"
+                    class="text-primary-custom text-decoration-none fw-semibold small"
+                >
+                    Hubungi Kami
+                    <i class="bi bi-arrow-right ms-1"></i>
+                </a>
             </div>
 
-            <a
-                href="#contact"
-                class="text-primary-custom text-decoration-none fw-semibold small"
-            >
-                Hubungi Kami
-                <i class="bi bi-arrow-right ms-1"></i>
-            </a>
-        </div>
+            <div class="row g-4">
 
-        <div class="row g-4">
+                @forelse ($product as $item)
 
-            @forelse ($product as $item)
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card-news h-100">
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="card-news h-100">
+                            @if ($item->image)
 
-                        @if ($item->image)
+                                <img
+                                    src="{{ asset('storage/' . $item->image) }}"
+                                    alt="{{ $item->title }}"
+                                >
 
-                            <img
-                                src="{{ asset('storage/' . $item->image) }}"
-                                alt="{{ $item->title }}"
-                            >
+                            @else
 
-                        @else
-
-                            <div
-                                class="bg-light d-flex align-items-center justify-content-center"
-                                style="height: 180px;"
-                            >
-                                <i class="bi bi-box-seam fs-1 text-secondary"></i>
-                            </div>
-
-                        @endif
-
-                        <div class="p-3">
-
-                            <div class="news-date mb-1">
-                                {{ $item->created_at->format('d M Y') }}
-                            </div>
-
-                            <h6 class="fw-bold text-dark mb-2">
-                                {{ $item->title }}
-                            </h6>
-
-                            @if ($item->description)
-
-                                <p class="text-secondary small mb-0">
-                                    {{ Str::limit($item->description, 120) }}
-                                </p>
+                                <div
+                                    class="bg-light d-flex align-items-center justify-content-center"
+                                    style="height: 180px;"
+                                >
+                                    <i class="bi bi-box-seam fs-1 text-secondary"></i>
+                                </div>
 
                             @endif
 
+                            <div class="p-3">
+
+                                <div class="news-date mb-1">
+                                    {{ $item->created_at->format('d M Y') }}
+                                </div>
+
+                                <h6 class="fw-bold text-dark mb-2">
+                                    {{ $item->title }}
+                                </h6>
+
+                                @if ($item->description)
+
+                                    <p class="text-secondary small mb-0">
+                                        {{ Str::limit($item->description, 120) }}
+                                    </p>
+
+                                @endif
+
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
 
-            @empty
+                @empty
 
-                <div class="col-12">
-                    <div class="text-center py-5">
+                    <div class="col-12">
+                        <div class="text-center py-5">
 
-                        <i class="bi bi-box-seam fs-1 text-secondary"></i>
+                            <i class="bi bi-box-seam fs-1 text-secondary"></i>
 
-                        <p class="text-secondary mt-3 mb-0">
-                            Produk akan segera tersedia.
-                        </p>
+                            <p class="text-secondary mt-3 mb-0">
+                                Produk akan segera tersedia.
+                            </p>
 
+                        </div>
                     </div>
-                </div>
 
-            @endforelse
+                @endforelse
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-   <!-- News Section -->
+    <!-- News Section -->
     <section id="news" class="py-5">
 
         <div class="container">
@@ -1429,51 +1288,47 @@
 
     </footer>
 
+    @push('scripts')
+        <!-- Smooth Scroll -->
+        <script>
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                link.addEventListener('click', function (e) {
 
+                    const href = this.getAttribute('href');
 
-    <!-- Smooth Scroll -->
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
+                    if (!href || href === '#') {
+                        return;
+                    }
 
-            link.addEventListener('click', function (e) {
+                    const target = document.querySelector(href);
 
-                const href = this.getAttribute('href');
+                    if (!target) {
+                        return;
+                    }
 
-                if (!href || href === '#') {
-                    return;
-                }
+                    e.preventDefault();
 
-                const target = document.querySelector(href);
+                    const header = document.querySelector('.navbar');
 
-                if (!target) {
-                    return;
-                }
+                    const headerHeight = header
+                        ? header.offsetHeight + 15
+                        : 0;
 
-                e.preventDefault();
+                    const targetPosition =
+                        target.getBoundingClientRect().top +
+                        window.scrollY -
+                        headerHeight;
 
-                const header = document.querySelector('.navbar');
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
 
-                const headerHeight = header
-                    ? header.offsetHeight + 15
-                    : 0;
-
-                const targetPosition =
-                    target.getBoundingClientRect().top +
-                    window.scrollY -
-                    headerHeight;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
                 });
 
             });
+        </script>
+    @endpush
 
-        });
-    </script>
-
-</body>
-</html>
+</x-public.layout>

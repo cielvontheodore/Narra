@@ -1,0 +1,132 @@
+/* ==========================================================================
+   Narra — Error page shared styles (royal-blue theme)
+   Used only by errors/404 and errors/500. Loaded after css/auth.css.
+   ========================================================================== */
+
+/* ==========================================================================
+   Shared guest navbar, adapted for the royal-blue background
+   (x-public.navbar rendered with variant="on-blue").
+   The base colour treatment (transparent background, white brand/links)
+   comes from css/auth.css; these rules keep the welcome page's sizing and
+   spacing and give the toggler icon enough contrast on the blue backdrop.
+   ========================================================================== */
+
+.navbar.navbar-on-blue {
+    --bs-navbar-color: rgba(255, 255, 255, 0.85);
+    /* Transparent bar: let it scroll away instead of sticking over content
+       (the error pages were not sticky before). */
+    position: static;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.navbar-on-blue .navbar-brand {
+    font-size: 1.65rem;
+    letter-spacing: -0.03em;
+}
+
+.navbar-on-blue .nav-link.active {
+    color: #ffffff !important;
+}
+
+.navbar-on-blue .navbar-toggler-icon {
+    /* Bootstrap's default toggler icon is dark; invert it for contrast. */
+    filter: brightness(0) invert(1);
+}
+
+/* ==========================================================================
+   Error content
+   ========================================================================== */
+
+.error-container {
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+    padding: 2rem 1.5rem;
+    text-align: center;
+}
+
+.error-code {
+    font-size: clamp(6rem, 20vw, 10rem);
+    line-height: 0.9;
+    font-weight: 800;
+    letter-spacing: -0.07em;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+.error-title {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.65rem;
+    letter-spacing: -0.01em;
+}
+
+.error-description {
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    color: var(--text-light-subtle);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   Button
+   ========================================================================== */
+
+.btn-home {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #ffffff;
+    color: var(--royal-blue);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.btn-home:hover {
+    background-color: #f8fafc;
+    color: var(--royal-blue-hover);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-home:active {
+    transform: scale(0.99);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .navbar.navbar-on-blue {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .error-container {
+        padding: 1.5rem;
+    }
+
+    .error-code {
+        margin-bottom: 1.25rem;
+    }
+
+    .error-title {
+        font-size: 1.45rem;
+    }
+
+    .error-description {
+        font-size: 0.875rem;
+    }
+}

@@ -1,0 +1,104 @@
+/* ==========================================================================
+   Narra — Auth / Error shared styles (royal-blue theme)
+   Shared chrome for auth/login and the error pages. Page-specific styles stay
+   in the views; error-only styles live in css/error.css.
+   ========================================================================== */
+
+:root {
+    --royal-blue: #2b66f6;
+    --royal-blue-hover: #1e52d8;
+    --text-light-subtle: rgba(255, 255, 255, 0.82);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--royal-blue);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+
+.navbar {
+    background-color: transparent !important;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.75rem;
+    color: #ffffff !important;
+    letter-spacing: -0.02em;
+}
+
+.nav-link {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9) !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff !important;
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 0;
+    width: 100%;
+}
+
+footer {
+    padding-top: 1.75rem;
+    padding-bottom: 2rem;
+}
+
+.footer-brand {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.copyright-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.06em;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 576px) {
+    .navbar {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+}
