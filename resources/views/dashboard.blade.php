@@ -565,6 +565,13 @@
                 <span>Rating</span>
             </a>
 
+            <a
+                href="{{ route('admin-product.index') }}"
+                class="nav-link-custom"
+            >
+                <i class="bi bi-box"></i>
+                <span>Product</span>
+            </a>
             @can('manage-admins')
                 <a
                     href="{{ route('admin-admins.index') }}"
@@ -713,6 +720,13 @@
                 <span>Rating</span>
             </a>
 
+            <a
+                href="{{ route('admin-product.index') }}"
+                class="nav-link-custom"
+            >
+                <i class="bi bi-box"></i>
+                <span>Product</span>
+            </a>
             @can('manage-admins')
                 <a
                     href="{{ route('admin-admins.index') }}"

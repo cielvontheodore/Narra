@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Gallery;
 use App\Models\News;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -12,8 +13,9 @@ class HomeController extends Controller
     {
         $news = News::latest()->take(3)->get();
         $gallery = Gallery::latest()->take(3)->get();
+        $product = Product::latest()->take(3)->get();
 
-        return view('welcome', compact('news', 'gallery'));
+        return view('welcome', compact('news', 'gallery', 'product'));
     }
 
     public function gallery()
@@ -22,7 +24,7 @@ class HomeController extends Controller
 
         return view('dedicatedpage.gallery.index', compact('gallery'));
     }
-    
+
     public function galleryShow(Gallery $gallery)
     {
         return view('dedicatedpage.gallery.dedicated', compact('gallery'));

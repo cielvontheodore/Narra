@@ -676,7 +676,104 @@
     </section>
 
 
-    <!-- News Section -->
+<!-- Product Section -->
+<section id="products" class="py-5">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-end mb-4">
+            <div>
+                <span class="badge-soft-primary mb-2">
+                    Solusi Kami
+                </span>
+
+                <h2 class="fw-bold mb-1 fs-2">
+                    Produk Kami
+                </h2>
+
+                <p class="text-secondary small mb-0">
+                    Kenali berbagai produk dan solusi yang kami tawarkan
+                    untuk mendukung kebutuhan Anda.
+                </p>
+            </div>
+
+            <a
+                href="#contact"
+                class="text-primary-custom text-decoration-none fw-semibold small"
+            >
+                Hubungi Kami
+                <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+        </div>
+
+        <div class="row g-4">
+
+            @forelse ($product as $item)
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-news h-100">
+
+                        @if ($item->image)
+
+                            <img
+                                src="{{ asset('storage/' . $item->image) }}"
+                                alt="{{ $item->title }}"
+                            >
+
+                        @else
+
+                            <div
+                                class="bg-light d-flex align-items-center justify-content-center"
+                                style="height: 180px;"
+                            >
+                                <i class="bi bi-box-seam fs-1 text-secondary"></i>
+                            </div>
+
+                        @endif
+
+                        <div class="p-3">
+
+                            <div class="news-date mb-1">
+                                {{ $item->created_at->format('d M Y') }}
+                            </div>
+
+                            <h6 class="fw-bold text-dark mb-2">
+                                {{ $item->title }}
+                            </h6>
+
+                            @if ($item->description)
+
+                                <p class="text-secondary small mb-0">
+                                    {{ Str::limit($item->description, 120) }}
+                                </p>
+
+                            @endif
+
+                        </div>
+
+                    </div>
+                </div>
+
+            @empty
+
+                <div class="col-12">
+                    <div class="text-center py-5">
+
+                        <i class="bi bi-box-seam fs-1 text-secondary"></i>
+
+                        <p class="text-secondary mt-3 mb-0">
+                            Produk akan segera tersedia.
+                        </p>
+
+                    </div>
+                </div>
+
+            @endforelse
+
+        </div>
+    </div>
+</section>
+
+   <!-- News Section -->
     <section id="news" class="py-5">
 
         <div class="container">

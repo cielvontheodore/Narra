@@ -8,9 +8,10 @@ use App\Http\Controllers\InboxController;
 use App\Http\Models\News;
 use App\Http\Models\Inbox;
 use App\Http\Models\Gallery;
+use App\Models\Product;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AiController;
 use App\Http\Controllers\RatingController;
 
 
@@ -42,7 +43,6 @@ Route::resource('/rating', RatingController::class)
 
 
 // chatbot min
-Route::post('/ai/chat', [AiController::class, 'chat']);
 
 // rate limiting native laravel + contact store with cloudflare captcha
 Route::post('/contact', [InboxController::class, 'storepublic'])
@@ -63,7 +63,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/admin/news', NewsController::class)->names('admin-news');
     Route::resource('/admin/gallery', GalleryController::class)->names('admin-gallery');
     Route::resource('/admin/inbox', InboxController::class)->names('admin-inbox');
-
+    Route::resource('/admin/product', ProductController::class)->names('admin-product');
     Route::resource('/admin/rating', RatingController::class)->names('admin-rating');
 });
 
@@ -78,9 +78,5 @@ require __DIR__.'/auth.php';
 
 
 // todo
-// rapihin ui admin
-// whatsapp integration
-// ai integration
-// seo
-// ui baru
-// ppdb
+//
+// 1. tambahkan dasbor admin
